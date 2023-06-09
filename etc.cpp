@@ -16,7 +16,7 @@ void game_story(int );
 void game_timer(int stage);
 int packman_create(int x, int y);
 void packman_remove(int x, int y);
-void ch_move(int stage);
+int ch_move(int stage);
 void ghost_create(int x, int y);
 void ghost_remove(int x, int y);
 void maze();
@@ -24,7 +24,7 @@ void create_maze();
 void maze_set();
 void print_maze();
 int check_block(int x, int y); //좌표를 입력받고 그걸로 확인 (임의)
-bool clear(int stage, int playing);
+bool clear(int stage);
 void choose_random_location(int* width, int* length);
 void gold_item();
 int bgm();
@@ -282,4 +282,9 @@ void gotoxy(int x, int y) { //텍스트 출력 위치를 바꾸는 함수
 void setConsoleColor(int colorCode) { //글씨의 색깔을 바꾸는 함수
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, colorCode);
+}
+
+// 주어진 좌표의 셀이 벽인지 아닌지 확인 (블록체크)
+int is_block(int x, int y) {
+    return maze[x][y] == 1;
 }
